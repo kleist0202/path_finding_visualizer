@@ -330,6 +330,8 @@ class AStar:
         if self.end_tile is not None:
             if not self.end_tile.is_start():
                 self.end_tile.set_marker(Markers.PATH)
+            else:
+                self.end_tile.parent = None
 
     def clean_up(self):
         self.open.clear()
