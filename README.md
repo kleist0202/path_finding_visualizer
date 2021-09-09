@@ -25,3 +25,5 @@ For more informations type:
 ```
 python Main.py --help
 ```
+Below you can see how it works: <br /><br />
+![screen-gif](./path_finding_video.gif)
