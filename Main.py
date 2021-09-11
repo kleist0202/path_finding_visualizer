@@ -7,6 +7,8 @@ from MazeGeneration import SidewinderAlgorithm
 from Algorithms import BFS, DFS, AStar
 from gui import Frame, TextFrame, Button, VLayout, HLayout, GridLayout
 from gui import Color
+from threading import Thread
+import time
 
 
 p = argparse.ArgumentParser(formatter_class=argparse.MetavarTypeHelpFormatter)
@@ -82,7 +84,11 @@ class Main:
         self.algo = None
         self.algorithm_index = 0
 
+        # thread
+        self.t = Thread(target=self.draw_markers_inf, daemon=True)
+
         # gui
+
         self.fr = Frame(w=self.path.get_gui_width(),
                         h=self.path.get_gui_height(),
                         fill=Color.SliderColorBg,
@@ -249,6 +255,7 @@ class Main:
 
     def main_loop(self):
         self.set_screen_color(100, 100, 200)
+        self.t.start()
 
         while self.running:
             self.events()
@@ -263,6 +270,7 @@ class Main:
             self.path.place_markers(mouse_pos, mouse_button)
 
             self.path.render_scene(self.screen)
+
             self.main_v.draw(self.screen.get_size(), mouse_pos,
                              mouse_button, keys, self.delta_time)
             self.gui_frames_layout.draw(self.screen.get_size(), mouse_pos,
@@ -282,7 +290,8 @@ class Main:
                 f"{self.path.chosen_algorithm.name}")
             self.time_frame.set_text(
                 f"Time: {self.path.time_elapsed:.2f}")
-            self.path.draw_markers()
+
+            # self.path.draw_markers()
 
             # generate maze when 'g' key is pressed
 
@@ -351,6 +360,11 @@ class Main:
                     self.next_algorithm()
                 elif event.key == pygame.K_p:
                     self.prev_algorithm()
+
+    def draw_markers_inf(self):
+        while True:
+            self.path.draw_markers()
+            time.sleep(0.05)
 
     def run_algorithm(self):
         if self.path.start_algorithm:
