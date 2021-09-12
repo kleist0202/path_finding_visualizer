@@ -1,4 +1,4 @@
-from Tiles import Markers
+from tiles import Markers
 from math import sqrt
 from operator import attrgetter
 

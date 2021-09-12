@@ -1,5 +1,5 @@
 from random import randint
-from Tiles import Tile, Markers
+from tiles import Tile, Markers
 
 
 class SidewinderAlgorithm:

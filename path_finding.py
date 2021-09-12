@@ -1,6 +1,6 @@
 import pygame
 from gui import Color
-from Tiles import Tile, Markers, Algorithms
+from tiles import Tile, Markers, Algorithms
 from gui import Frame
 
 

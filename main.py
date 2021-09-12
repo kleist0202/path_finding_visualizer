@@ -1,10 +1,10 @@
 import pygame
 import sys
 import argparse
-from Fps import Fps
-from PathFinding import PathFinding, Markers, Algorithms
-from MazeGeneration import SidewinderAlgorithm
-from Algorithms import BFS, DFS, AStar
+from fps import Fps
+from path_finding import PathFinding, Markers, Algorithms
+from maze_generation import SidewinderAlgorithm
+from algorithms import BFS, DFS, AStar
 from gui import Frame, TextFrame, Button, VLayout, HLayout, GridLayout
 from gui import Color
 
