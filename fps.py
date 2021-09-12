@@ -8,8 +8,7 @@ class Fps:
         self.x = x
         self.y = y
         self.cSec, self.cFrame, self.FPS, self.delta = 0, 0, 0, 0
-        self.fps_font = pygame.font.Font(
-            "/usr/share/fonts/noto/NotoSansMono-Black.ttf", font_size)
+        self.fps_font = pygame.font.SysFont("dejavusansmono", font_size)
 
     def fps(self):
         if self.cSec == time.strftime("%S"):
